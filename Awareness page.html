@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>اختبار توعية أمني — تأمين عالمنا</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;color:#222;padding:2rem;text-align:center}
+    .card{max-width:820px;margin:0 auto;background:#fff;padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+    h1{margin-top:0;font-size:1.6rem}
+    p{line-height:1.6}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;border:1px solid #333;margin:6px}
+    img{max-width:100%;height:auto;border-radius:8px;margin:16px 0}
+    footer{margin-top:18px;font-size:0.9rem;color:#666}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>اختبار توعية أمني - شهر التوعية في الامن السيبراني</h1>
+    <p>شكراً لزيارتك. هذه الصفحة جزء من توعية بلأمن السيبراني تهدف لرفع الوعي حول رسائل التصيّد. لم نطلب ولا نحتفظ بأي كلمة مرور أو معلومات حساسة.</p>
+
+    <!-- الصورة المرسلة -->
+    <img src="photohacked.jpg" alt="توعية أمنية">
+
+    <p>نصيحتان سريعتان: <br>• لا تدخل بيانات حساسة داخل مواقع أو روابط غير متوقعة. <br>• إذا شككت برسالة، بلّغ فريق الأمن عبر القناة المعتمدة.</p>
+
+    <a class="btn" href="mailto:security@your-org.local?subject=تبليغ%20رسالة%20مشبوهة">أبلغ فريق الأمن</a>
+    <a class="btn" href="#" id="learn">ابدأ تدريب قصير (5 دقائق)</a>
+
+    <hr/>
+    <p>عدد زيارات هذه الصفحة: <span id="visits">...</span></p>
+
+    <footer>هذه الحملة داخلية لأغراض تدريبية فقط. لأي استفسار تواصل مع قسم الأمن.</footer>
+  </div>
+
+  <script>
+    // CountAPI: عداد زيارات آمن
+    (function(){
+      const namespace = 'awareness-page-2025';
+      const key = 'main';
+      const url = 'https://api.countapi.xyz/hit/' + encodeURIComponent(namespace) + '/' + encodeURIComponent(key);
+
+      fetch(url)
+        .then(r => r.json())
+        .then(data => { document.getElementById('visits').textContent = data.value || 1 })
+        .catch(e => { document.getElementById('visits').textContent = '—'; console.warn(e) });
+
+      // زر التدريب يفتح رابط خارجي (يمكن تغييره لدورة حقيقية)
+      document.getElementById('learn').addEventListener('click', function(e){
+        e.preventDefault();
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+      });
+    })();
+  </script>
+</body>
+</html>
