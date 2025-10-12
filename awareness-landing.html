@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>اختبار توعية أمني — حملة داخلية</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;color:#222;padding:2rem}
+    .card{max-width:820px;margin:0 auto;background:#fff;padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+    h1{margin-top:0;font-size:1.6rem}
+    p{line-height:1.6}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;border:1px solid #333}
+    .meta{color:#555;font-size:0.95rem;margin-top:12px}
+    .counter{font-weight:700}
+    footer{margin-top:18px;font-size:0.9rem;color:#666}
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-labelledby="title">
+    <h1 id="title">اختبار توعية أمني — هذه صفحة داخلية للتدريب</h1>
+    <p>شكراً لزيارتك. هذه الصفحة جزء من حملة توعية داخلية تهدف لرفع الوعي حول رسائل التصيّد. لم نطلب ولا نحتفظ بأي كلمة مرور أو معلومات حساسة.</p>
+
+    <p class="meta">نصيحتان سريعتان: <br>• لا تدخل بيانات حساسة داخل مواقع أو روابط غير متوقعة. <br>• إذا شككت برسالة، بلّغ فريق الأمن عبر القناة المعتمدة.</p>
+
+    <p><a class="btn" href="mailto:security@your-org.local?subject=تبليغ%20رسالة%20مشبوهة">أبلغ فريق الأمن</a>
+      <span style="margin-left:10px"> <a class="btn" href="#" id="learn">ابدأ تدريب قصير (5 دقائق)</a></span>
+    </p>
+
+    <hr/>
+
+    <p>عدد زيارات هذه الصفحة: <span class="counter" id="visits">... </span></p>
+
+    <footer>
+      هذه الحملة داخلية لأغراض تدريبية فقط. لأي استفسار تواصل مع قسم الأمن.
+    </footer>
+  </div>
+
+  <script>
+    // CountAPI: خدمة مجانية بسيطة لعد الزيارات (لا تجمع PII)
+    (function(){
+      const namespace = 'your-org-landing-2025'; // غيّريها لو حبيتي لتمييز حملات أخرى
+      const key = 'awareness-page';
+      const url = 'https://api.countapi.xyz/hit/' + encodeURIComponent(namespace) + '/' + encodeURIComponent(key);
+
+      fetch(url)
+        .then(r => r.json())
+        .then(data => {
+          if (data && data.value !== undefined) {
+            document.getElementById('visits').textContent = data.value;
+          } else {
+            document.getElementById('visits').textContent = '1';
+          }
+        })
+        .catch(e => {
+          document.getElementById('visits').textContent = '—';
+          console.warn('countapi failed', e);
+        });
+
+      // مثال: زر التدريب يفتح صفحة داخلية أو مودال (هنا نفتح رابط خارجي تعليمات قصيرة)
+      document.getElementById('learn').addEventListener('click', function(e){
+        e.preventDefault();
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'); // غيّر الرابط لدورة قصيرة فعلية
+      });
+    })();
+  </script>
+</body>
+</html>
