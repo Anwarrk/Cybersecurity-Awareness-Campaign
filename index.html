@@ -20,9 +20,9 @@
     <p>شكراً لزيارتك. هذه الصفحة جزء من توعية بلأمن السيبراني تهدف لرفع الوعي حول رسائل التصيّد. لم نطلب ولا نحتفظ بأي كلمة مرور أو معلومات حساسة.</p>
 
     <!-- الصورة المرسلة -->
-    <img src="photohacked.jpg" alt="توعية أمنية">
+    <img src="photohacked.jpg" alt="توعية أمنية" style="width: 300px; height: auto;">
 
-    <p>نصيحتان سريعتان: <br>• لا تدخل بيانات حساسة داخل مواقع أو روابط غير متوقعة. <br>• إذا شككت برسالة، بلّغ فريق الأمن عبر القناة المعتمدة.</p>
+    <p>نصيحتان سريعتان: <br>• لا تدخل بيانات حساسة داخل مواقع أو روابط غير متوقعة. <br>• إذا شككت برسالة، بلّغ فريق الأمن المسؤول.</p>
 
     <a class="btn" href="mailto:security@your-org.local?subject=تبليغ%20رسالة%20مشبوهة">أبلغ فريق الأمن</a>
     <a class="btn" href="#" id="learn">ابدأ تدريب قصير (5 دقائق)</a>
@@ -30,7 +30,7 @@
     <hr/>
     <p>عدد زيارات هذه الصفحة: <span id="visits">...</span></p>
 
-    <footer>هذه الحملة داخلية لأغراض تدريبية فقط. لأي استفسار تواصل مع قسم الأمن.</footer>
+    <footer>هذه الحملة توعوية لأغراض تدريبية فقط. لأي استفسار تواصل مع القسم التقني</footer>
   </div>
 
   <script>
@@ -44,8 +44,8 @@
         .then(r => r.json())
         .then(data => { document.getElementById('visits').textContent = data.value || 1 })
         .catch(e => { document.getElementById('visits').textContent = '—'; console.warn(e) });
-
-      // زر التدريب يفتح رابط خارجي (يمكن تغييره لدورة حقيقية)
+      
+      // Training link
       document.getElementById('learn').addEventListener('click', function(e){
         e.preventDefault();
         window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
@@ -54,3 +54,4 @@
   </script>
 </body>
 </html>
+
