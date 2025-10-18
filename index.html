@@ -52,26 +52,24 @@
     <footer> هذه الصفحة توعوية لأغراض تدريبية لأي استفسار تواصل مع القسم التقني</footer>
   </div>
 
-  <script>
-    // CountAPI: عداد زيارات آمن
-    (function(){
-      const namespace = 'awareness-page-2025';
-      const key = 'main';
-      const url = 'https://api.countapi.xyz/hit/' + encodeURIComponent(namespace) + '/' + encodeURIComponent(key);
+<script>
+  // عداد زيارات محلي
+  (function() {
+    let visits = localStorage.getItem('page_visits') || 0;
+    visits++;
+    localStorage.setItem('page_visits', visits);
+    document.getElementById('visits').textContent = visits;
 
-      fetch(url)
-        .then(r => r.json())
-        .then(data => { document.getElementById('visits').textContent = data.value || 1 })
-        .catch(e => { document.getElementById('visits').textContent = '—'; console.warn(e) });
-
-      // Training link
-      document.getElementById('learn').addEventListener('click', function(e){
-        e.preventDefault();
-        window.open('https://youtu.be/SJhLufForYc?si=N3AFYfxwLBC-xu-m', '_blank');
-      });})(); 
+  // Training link
+    document.getElementById('learn').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open('https://youtu.be/SJhLufForYc?si=N3AFYfxwLBC-xu-m', '_blank');
+    });
+  })();
   </script>
 </body>
 </html>
+
 
 
 
